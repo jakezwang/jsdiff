@@ -6,7 +6,8 @@
 
         // What we would IDEALLY like to do is compile against type declarations corresponding to
         // precisely what is available in BOTH the "Widely Available" Baseline
-        // (https://web.dev/baseline) AND the latest Node.js LTS, since jsdiff supports both.
+        // (https://web-platform-dx.github.io/baseline/) AND the latest Node.js LTS, since jsdiff
+        // supports both.
         // Alas, there is no way to do this. As of configuring the settings below (7th
         // April 2026)...
         // 1. there is simply no way to tell TypeScript to use the intersection of two sets of
