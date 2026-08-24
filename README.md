@@ -442,7 +442,7 @@ applyPatches(patch, {
 
 Version 8 of jsdiff supported ES5.
 
-Starting from version 9, at the point of release, each jsdiff release should fully support the latest LTS version of Node plus all [Baseline](https://web.dev/baseline) "core browser" releases that are at least 30 months old. (That is: jsdiff only uses JavaScript features that are deemed "widely available" by Baseline.) If you find one that it doesn't support, please [open an issue](https://github.com/kpdecker/jsdiff/issues).
+Starting from version 9, at the point of release, each jsdiff release should fully support the latest LTS version of Node plus all [Baseline](https://web-platform-dx.github.io/baseline/) "core browser" releases that are at least 30 months old. (That is: jsdiff only uses JavaScript features that are deemed "widely available" by Baseline.) If you find one that it doesn't support, please [open an issue](https://github.com/kpdecker/jsdiff/issues).
 
 ## TypeScript
 
