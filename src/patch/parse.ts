@@ -196,7 +196,8 @@ export function parsePatch(uniDiff: string): StructuredPatch[] {
         //       -- ExplodingCabbage
         const headerMatch = (/^(?:Index:|diff(?: -r \w+)+)\s+/).exec(line);
         if (headerMatch) {
-          index.index = line.substring(headerMatch[0].length).trim();
+          // Inverse of the quoteFileNameIfNeeded applied to the `Index:` line by formatPatch
+          index.index = unquoteIfQuoted(line.substring(headerMatch[0].length).trim());
         }
       }
 

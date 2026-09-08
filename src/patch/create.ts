@@ -413,7 +413,7 @@ export function formatPatch(patch: StructuredPatch | StructuredPatch[], headerOp
     }
   } else {
     if (headerOptions.includeIndex && patch.oldFileName == patch.newFileName && patch.oldFileName !== undefined) {
-      ret.push('Index: ' + patch.oldFileName);
+      ret.push('Index: ' + quoteFileNameIfNeeded(patch.oldFileName));
     }
     if (headerOptions.includeUnderline) {
       ret.push('===================================================================');
