@@ -704,6 +704,33 @@ describe('patch/create', function() {
         const diffResult = createTwoFilesPatch('testFileName', 'testFileName', 'foo\n', 'bar\n', undefined, undefined, {headerOptions: OMIT_HEADERS});
         expect(diffResult).to.equal(expectedResult);
       });
+
+      it('should quote the Index line for file names that require quoting, like we do with the --- and +++ lines', function() {
+        const fileName = 'x\n--- evil';
+        const patch = createPatch(fileName, 'foo\n', 'bar\n');
+        expect(patch).to.equal(
+          'Index: "x\\n--- evil"\n'
+          + '===================================================================\n'
+          + '--- "x\\n--- evil"\n'
+          + '+++ "x\\n--- evil"\n'
+          + '@@ -1,1 +1,1 @@\n'
+          + '-foo\n'
+          + '+bar\n'
+        );
+        expect(parsePatch(patch)[0].oldFileName).to.equal(fileName);
+      });
+
+      it('should unquote a quoted Index line when parsing', function() {
+        const patch =
+          'Index: "x\\n--- evil"\n'
+          + '===================================================================\n'
+          + '--- "x\\n--- evil"\n'
+          + '+++ "x\\n--- evil"\n'
+          + '@@ -1,1 +1,1 @@\n'
+          + '-foo\n'
+          + '+bar\n';
+        expect(parsePatch(patch)[0].index).to.equal('x\n--- evil');
+      });
     });
 
     it('should respect maxEditLength', function() {
