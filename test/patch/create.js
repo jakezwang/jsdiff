@@ -705,7 +705,7 @@ describe('patch/create', function() {
         expect(diffResult).to.equal(expectedResult);
       });
 
-      it('should quote the Index line for file names that require quoting, like the --- and +++ lines', function() {
+      it('should quote the Index line for file names that require quoting, like we do with the --- and +++ lines', function() {
         const fileName = 'x\n--- evil';
         const patch = createPatch(fileName, 'foo\n', 'bar\n');
         expect(patch).to.equal(
